@@ -20,7 +20,9 @@ const settingsRoutes = require('./routes/settings');
 const app = express();
 app.use(express.json());
 
-const FRONTEND = process.env.FRONTEND_ORIGIN || 'http://localhost:5173';
+const isProduction = process.env.NODE_ENV === 'production';
+const FRONTEND = (isProduction ? process.env.FRONTEND_ORIGIN_PRO : process.env.FRONTEND_ORIGIN)
+  || 'http://localhost:5173';
 app.use(cors({ origin: FRONTEND, credentials: true }));
 
 // Serve uploaded files
@@ -34,7 +36,8 @@ app.use('/api/settings', settingsRoutes);
 const PORT = process.env.PORT || 5000;
 // Prefer an explicit IPv4 address for local development to avoid
 // resolving `localhost` to an IPv6 ::1 address on some systems.
-const MONGO = process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/tornado_dev';
+const MONGO = (isProduction ? process.env.MONGO_URI_PRO : process.env.MONGO_URI)
+  || 'mongodb://127.0.0.1:27017/tornado_dev';
 
 async function start() {
   try {

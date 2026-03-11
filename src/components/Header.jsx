@@ -12,12 +12,28 @@ const MENU_CONFIG = [
     href: '/products',
     hasSubmenu: true,
     submenuItems: [
-      { id: 'industrial-machinery', label: 'Industrial Machinery', href: '/products/industrial-machinery' },
-      { id: 'telecommunications', label: 'Telecommunications Equipment', href: '/products/telecommunications' },
-      { id: 'lighting-systems', label: 'Lightning/Metrological Systems/Camera', href: '/products/lightning-systems' },
+      {
+        id: 'industrial-machinery',
+        label: 'Industrial Machinery',
+        href: '/products/industrial-machinery',
+      },
+      {
+        id: 'telecommunications',
+        label: 'Telecommunications Equipment',
+        href: '/products/telecommunications',
+      },
+      {
+        id: 'lighting-systems',
+        label: 'Lightning/Metrological Systems/Camera',
+        href: '/products/lightning-systems',
+      },
       { id: 'fire-fighting', label: 'Fire Fighting Equipment', href: '/products/fire-fighting' },
-      { id: 'it-hardware', label: 'IT Hardware & Software & Other Equipment', href: '/products/it-hardware' }
-    ]
+      {
+        id: 'it-hardware',
+        label: 'IT Hardware & Software & Other Equipment',
+        href: '/products/it-hardware',
+      },
+    ],
   },
   {
     id: 'services',
@@ -26,14 +42,26 @@ const MENU_CONFIG = [
     hasSubmenu: true,
     submenuItems: [
       { id: 'turnkey-solutions', label: 'Turnkey Solutions', href: '/services/turnkey-solutions' },
-      { id: 'project-management', label: 'Project Management', href: '/services/project-management' },
-      { id: 'maintenance-support', label: 'Maintenance Support/Service & Repair/Others', href: '/services/maintenance-support' },
+      {
+        id: 'project-management',
+        label: 'Project Management',
+        href: '/services/project-management',
+      },
+      {
+        id: 'maintenance-support',
+        label: 'Maintenance Support/Service & Repair/Others',
+        href: '/services/maintenance-support',
+      },
       { id: 'import-export', label: 'Import & Export', href: '/services/import-export' },
-      { id: 'contract-management', label: 'Contract Management', href: '/services/contract-management' }
-    ]
+      {
+        id: 'contract-management',
+        label: 'Contract Management',
+        href: '/services/contract-management',
+      },
+    ],
   },
   { id: 'partners', label: 'PARTNERS', href: '/partners', hasSubmenu: false },
-  { id: 'contact', label: 'CONTACT US', href: '/contact-us', hasSubmenu: false }
+  { id: 'contact', label: 'CONTACT US', href: '/contact-us', hasSubmenu: false },
 ];
 
 export default function Header() {
@@ -41,13 +69,13 @@ export default function Header() {
   const [logoUrl, setLogoUrl] = useState('');
   const [expandedMenus, setExpandedMenus] = useState({
     products: false,
-    services: false
+    services: false,
   });
   const headerRef = useRef(null);
   const location = useLocation();
   const navigate = useNavigate();
 
-  const isActive = (href) => {
+  const isActive = href => {
     if (href.startsWith('#')) {
       return false; // Anchor links are not considered "active" pages
     }
@@ -134,10 +162,10 @@ export default function Header() {
       `alt` description (you already have alt — keep it meaningful).
   */
 
-  const toggleMenu = (menuId) => {
+  const toggleMenu = menuId => {
     setExpandedMenus(prev => ({
       ...prev,
-      [menuId]: !prev[menuId]
+      [menuId]: !prev[menuId],
     }));
   };
 
@@ -152,7 +180,7 @@ export default function Header() {
               <Link to="/" className="brand" aria-label="Tornado Home">
                 <img
                   className="brand-logo"
-                  src={logoUrl || '/assets/logo-tornado.jpg'}
+                  src={logoUrl || '/logo/LOGO-TORNADO.svg'}
                   alt="Tornado"
                 />
               </Link>
