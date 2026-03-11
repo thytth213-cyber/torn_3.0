@@ -115,7 +115,7 @@ export default function Footer() {
           <div className="footer-col-3">
             <h4>Contact Information</h4>
             <div className="f-links">
-              <p>111 Somerset Road, #1136 TripleOne Somerset Singapore 238164</p>
+              <p>Room 1702, Sino Centre, 582-592 Nathan Rd., Mongkok, Kowloon, Hong Kong</p>
               <a href="tel:+6567321431" className="contact-item">
                 <strong>Tel:</strong> +65 67321431
               </a>
