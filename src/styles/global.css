@@ -1,0 +1,272 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+body, #root {
+  width: 100%;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: #f8fafc;
+  color: #0f172a;
+  line-height: 1.5;
+}
+
+.app-shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+main {
+  flex: 1;
+}
+
+/* Reset links */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Reset lists */
+ul, ol {
+  list-style: none;
+}
+
+/* Reset buttons */
+button {
+  font-family: inherit;
+  border: none;
+  cursor: pointer;
+}
+
+/* Reset inputs */
+input, textarea, select {
+  font-family: inherit;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* ===== SCROLL ANIMATIONS ===== */
+
+/* Keyframe animations */
+@keyframes slideInFromLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInFromRight {
+  from {
+    opacity: 0;
+    transform: translateX(60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInFromTop {
+  from {
+    opacity: 0;
+    transform: translateY(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInFromBottom {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Scroll animation base styles */
+.scroll-animate {
+  opacity: 0;
+  transform: translateX(-60px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.scroll-animate.in-view {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Left to Right animation */
+.animate-left {
+  opacity: 0;
+  transform: translateX(-60px);
+  transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+  animation: slideInFromLeft 0.7s ease-out 0.1s forwards;
+}
+
+.animate-left.in-view {
+  animation: slideInFromLeft 0.7s ease-out forwards;
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Right to Left animation */
+.animate-right {
+  opacity: 0;
+  transform: translateX(60px);
+  transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+  animation: slideInFromRight 0.7s ease-out 0.1s forwards;
+}
+
+.animate-right.in-view {
+  animation: slideInFromRight 0.7s ease-out forwards;
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Top to Bottom animation */
+.animate-top {
+  opacity: 0;
+  transform: translateY(-40px);
+  transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+  animation: slideInFromTop 0.7s ease-out 0.1s forwards;
+}
+
+.animate-top.in-view {
+  animation: slideInFromTop 0.7s ease-out forwards;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Bottom to Top animation */
+.animate-bottom {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+  animation: slideInFromBottom 0.7s ease-out 0.1s forwards;
+}
+
+.animate-bottom.in-view {
+  animation: slideInFromBottom 0.7s ease-out forwards;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Fade animation */
+.animate-fade {
+  opacity: 0;
+  transition: opacity 0.7s ease-out;
+  animation: fadeIn 0.7s ease-out 0.1s forwards;
+}
+
+.animate-fade.in-view {
+  animation: fadeIn 0.7s ease-out forwards;
+  opacity: 1;
+}
+
+/* Scale animation */
+.animate-scale {
+  opacity: 0;
+  transform: scale(0.95);
+  transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+  animation: scaleIn 0.7s ease-out 0.1s forwards;
+}
+
+.animate-scale.in-view {
+  animation: scaleIn 0.7s ease-out forwards;
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Stagger effect for child elements */
+[data-stagger-child] {
+  --stagger-delay: 0ms;
+  opacity: 0;
+  transform: translateX(-60px);
+  transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+  animation: slideInFromLeft 0.7s ease-out var(--stagger-delay) forwards;
+}
+
+[data-stagger-child].in-view {
+  animation: slideInFromLeft 0.7s ease-out var(--stagger-delay) forwards;
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Reduced motion support for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .scroll-animate,
+  .animate-left,
+  .animate-right,
+  .animate-top,
+  .animate-bottom,
+  .animate-fade,
+  .animate-scale,
+  [data-stagger-child] {
+    opacity: 1;
+    transform: none !important;
+    transition: none !important;
+    animation: none !important;
+  }
+}
